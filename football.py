@@ -5,7 +5,7 @@ It calculates potential winnings based on an initial investment and the number o
 from random import choice
 
 def calc_stats(bank:int, times:int)->float:
-    coef = [1.60, 1.70, 1.80, 1.90, 2.0]
+    coef = [1.50, 1.55, 1.60, 1.65, 1.70, 1.75, 1.80, 1.85,  1.90, 1.95, 2.0]
     while times > 0 and bank > 0:
         if choice((True,True,False)):
             bank = (bank / 2) + ((bank / 2) * choice(coef))
