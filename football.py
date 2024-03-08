@@ -1,3 +1,7 @@
+#This Python code simulates a gambling scenario with an uncertain outcome. 
+#It calculates potential winnings based on an initial investment and the number of "games" played.
+
+
 from random import choice
 
 def calc_stats(bank:int, times:int)->float:
