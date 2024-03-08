@@ -1,7 +1,6 @@
 from random import choice
 
-
-def analize_football(bank:float, times:int)->float:
+def calc_stats(bank:int, times:int)->float:
     coef = [1.60, 1.70, 1.80, 1.90, 2.0]
     while times > 0 and bank > 0:
         if choice((True,True,False)):
@@ -15,9 +14,9 @@ def analize_football(bank:float, times:int)->float:
 def main():
     money = int(input("Enter now many money do you spent: "))
     times = int(input("How much times do it: "))
-    total = 0
+    total = 0.0
     for i in range(times):
-        res = analize_football(money, times)
+        res = calc_stats(money, times)
         total += res
         print(f"You earn money: {res:.2f}")
     spent = money * times
@@ -25,6 +24,8 @@ def main():
     print(f"Total win: {total}")
     win_chanse = (total / spent) * 100
     print(f"Win chanse: {win_chanse:.2f}%")
+
+
 
 
 
