@@ -4,30 +4,37 @@ It calculates potential winnings based on an initial investment and the number o
 
 from random import choice
 
-def calc_stats(bank:int, times:int)->float:
+def calc_stats(bank:int, earn:int):
+
     coef = [1.50, 1.55, 1.60, 1.65, 1.70, 1.75, 1.80, 1.85,  1.90, 1.95, 2.0]
-    while times > 0 and bank > 0:
-        if choice((True,True,False)):
-            bank = (bank / 2) + ((bank / 2) * choice(coef))
+    times = 0
+    while bank < earn and bank > 1:
+        times += 1
+        kef = choice(coef)
+        if choice((True,False)):
+            bank = (bank / 2) + ((bank / 2) * kef)
+            print(f"[{times}] Win -  {kef} - {bank:.2f}")
         else:
             bank -= (bank / 2)
-        times -= 1
-    return bank   
+            print(f"[{times}] Lose {kef} - {bank:.2f}")
+        
+    return (bank, times)
 
 
 def main():
     money = int(input("Enter now many money do you spent: "))
-    times = int(input("How much times do it: "))
+    times = int(input("How much money you want earn: "))
     total = 0.0
-    for i in range(times):
-        res = calc_stats(money, times)
-        total += res
-        print(f"You earn money: {res:.2f}")
+
+    res, count  = calc_stats(money, times)
+    total += res
+    print(f"You earn money: {res:.2f}")
     spent = money * times
     print(f"Total spent: {spent}")
     print(f"Total win: {total}")
     win_chanse = (total / spent) * 100
     print(f"Win chanse: {win_chanse:.2f}%")
+    print(f"Total run {count}")
 
 
 
